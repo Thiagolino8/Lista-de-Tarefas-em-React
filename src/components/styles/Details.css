@@ -1,0 +1,15 @@
+.details-info{
+    background-color: #444;
+    margin: 20px 0;
+    padding: 15px 20px;
+    display: flex;
+    display-color: #eee;
+    border-radius: 5px;
+    height: 100%;
+}
+
+.back-button {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+}
