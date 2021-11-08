@@ -13,11 +13,14 @@ const Details = () => {
 				<h1>{params.taskTitle}</h1>
 				<div class="details-info">
 					<p>
-						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus quas accusantium iusto obcaecati voluptatum hic?
+						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus
+						quas accusantium iusto obcaecati voluptatum hic?
 					</p>
 				</div>
-				<div class="back-button">
-					<Button onClick={handleBackClick}>Voltar</Button>
+				<div class="details-end">
+					<div class="back-button">
+						<Button onClick={handleBackClick}>Voltar</Button>
+					</div>
 				</div>
 			</>
 		);

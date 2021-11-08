@@ -8,8 +8,12 @@
     height: 100%;
 }
 
-.back-button {
-    width: 30%;
+.details-end {
     display: flex;
     justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.back-button {
+    width: 30%;
 }
