@@ -5,6 +5,7 @@ specifiers:
   '@types/react': ^17.0.43
   '@types/react-dom': ^17.0.14
   '@vitejs/plugin-react': ^1.2.0
+  nanoid: ^3.3.1
   react: ^17.0.2
   react-dom: ^17.0.2
   react-icons: ^4.3.1
@@ -14,6 +15,7 @@ specifiers:
 
 dependencies:
   '@tanstack/react-location': 3.7.4_react-dom@17.0.2+react@17.0.2
+  nanoid: 3.3.1
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   zustand: 3.7.1_react@17.0.2
@@ -744,7 +746,6 @@ packages:
     resolution: {integrity: sha512-n6Vs/3KGyxPQd6uO0eH4Bv0ojGSUvuLlIHtC3Y0kEO23YRge8H9x1GCzLn28YX0H66pMkxuaeESFq4tKISKwdw==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
-    dev: true
 
   /node-releases/2.0.2:
     resolution: {integrity: sha512-XxYDdcQ6eKqp/YjI+tb2C5WM2LgjnZrfYg4vgQt49EK268b6gYCHsBLrK2qvJo4FmCtqmKezb0WZFK4fkrZNsg==}

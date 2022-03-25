@@ -7,14 +7,14 @@ const Details = () => {
     return (
 			<>
 				{/* <h1>{params.taskTitle}</h1> */}
-				<div class="details-info">
+				<div className="details-info">
 					<p>
 						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus
 						quas accusantium iusto obcaecati voluptatum hic?
 					</p>
 				</div>
-				<div class="details-end">
-					<div class="back-button">
+				<div className="details-end">
+					<div className="back-button">
 						<Button onClick={handleBackClick}>Voltar</Button>
 					</div>
 				</div>

@@ -1,29 +1,31 @@
 import '../styles/RenderTask.css';
 import { CgClose, CgInfo } from 'react-icons/cg';
+import {useStore} from '../store';
 
-const TaskRender = ({ task, handleTaskClick, handleTaskDeletion }) => {
-	const handleInfoClick = (title) => {};
+const TaskRender = ({task}) => {
+	const { deleteTask, toggleTask } = useStore();
+	const handleInfoClick = (task) => {};
 	return (
 		<div
-			class='task'
+			className='task'
 			style={task.completed ? { borderLeft: '6px solid chartreuse' } : {}}
-			onClick={() => handleTaskClick(task.id)}
+			onClick={() => toggleTask(task.id)}
 		>
-			<div class='task-title'>
+			<div className='task-title'>
 				<p>{task.title}</p>
 			</div>
-			<div class='task-container'>
+			<div className='task-container'>
 				<button
-					class='task-delete'
+					className='task-delete'
 					onClick={(e) => {
 						e.stopPropagation();
-						handleTaskDeletion(task.id);
+						deleteTask(task.id);
 					}}
 				>
 					<CgClose />
 				</button>
 				<button
-					class='task-info'
+					className='task-info'
 					onClick={(e) => {
 						e.stopPropagation();
 						handleInfoClick(task.title);

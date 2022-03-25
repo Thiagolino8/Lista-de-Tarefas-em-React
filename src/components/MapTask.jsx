@@ -1,15 +1,12 @@
-import TaskRender from "./RenderTask";
+import { useStore } from '../store';
+import TaskRender from './RenderTask';
 
-const TaskMap = ({ tasks, handleTaskClick, handleTaskDeletion }) => {
+const TaskMap = () => {
+	const { tasks } = useStore();
 	return (
 		<>
 			{tasks.map((task) => (
-				<TaskRender
-					handleTaskClick={handleTaskClick}
-					id={task.id}
-					task={task}
-					handleTaskDeletion={handleTaskDeletion}
-				/>
+				<TaskRender task={task} />
 			))}
 		</>
 	);
