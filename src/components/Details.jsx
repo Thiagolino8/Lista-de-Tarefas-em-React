@@ -1,16 +1,12 @@
 import Button from "./Button";
-import './styles/Details.css'
-import {useParams, useHistory} from "react-router-dom";
+import '../styles/Details.css'
 
 const Details = () => {
-    const params = useParams();
-	const history = useHistory();
 	const handleBackClick = () => {
-		history.goBack();
 	}
     return (
 			<>
-				<h1>{params.taskTitle}</h1>
+				{/* <h1>{params.taskTitle}</h1> */}
 				<div class="details-info">
 					<p>
 						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus

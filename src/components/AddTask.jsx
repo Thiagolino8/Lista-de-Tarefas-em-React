@@ -1,4 +1,4 @@
-import './styles/AddTask.css'
+import '../styles/AddTask.css'
 import Button from './Button'
 import {useState} from 'react'
 
@@ -9,17 +9,18 @@ const AddTask = ({handleTaskAddition}) => {
         setInputData(event.target.value)
     }
 
-    const handleAddClick = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
         handleTaskAddition(inputData)
         setInputData('')
     }
 
-    return <div class="add-task-container">
+    return <form onSubmit={(e) => handleSubmit(e)} class="add-task-container">
         <input onChange={handeInputChange} value={inputData} type="text" class="add-task-input" />
         <div class="add-task-buttom">
-        <Button onClick={handleAddClick}>Inserir</Button>
+        <Button type='submit'>Inserir</Button>
         </div>
-    </div>
+    </form>
 }
 
 export default AddTask;
