@@ -2,10 +2,10 @@ import { useStore } from '../store';
 import TaskRender from './RenderTask';
 
 const TaskMap = () => {
-	const { tasks } = useStore();
+	const { filteredTasks } = useStore();
 	return (
 		<>
-			{tasks.map((task) => (
+			{filteredTasks.map((task) => (
 				<TaskRender task={task} />
 			))}
 		</>
