@@ -28,7 +28,7 @@ interface Props {
 }
 
 const Input = ({ children, type='text', value, setValue }: Props) => {
-  return <input className="h-10 px-3 rounded-md border-none bg-neutral-600 text-slate-200 text-base font-bold w-full" type={type} value={value} onChange={(e) => setValue(e.target.value)}>{children}</input>
+  return <input className="w-full h-10 px-3 text-base border-none rounded-md bg-neutral-600 text-slafont-semibold" type={type} value={value} onChange={(e) => setValue(e.target.value)}>{children}</input>
 }
 
 export default Input

@@ -1,5 +1,10 @@
 import { render } from "preact";
 import "./index.css";
 import App from "./App";
-
-render(<App />, document.getElementById("app")!);
+import { BrowserRouter } from "react-router-dom";
+render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById("app")!
+);

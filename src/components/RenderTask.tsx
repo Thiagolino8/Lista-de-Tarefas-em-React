@@ -1,3 +1,4 @@
+import { Link, useNavigate } from "react-router-dom";
 import { CgClose, CgInfo } from "react-icons/cg";
 import { useStore } from "../store";
 import { Task } from "../store";
@@ -7,8 +8,8 @@ interface Props {
 }
 
 const TaskRender = ({ task }: Props) => {
+  const navigate = useNavigate()
   const { deleteTask, toggleTask } = useStore();
-  const handleInfoClick = (task: string) => {};
   return (
     <div
       className={`${
@@ -16,7 +17,7 @@ const TaskRender = ({ task }: Props) => {
       } bg-zinc-700  px-3 py-2 my-3 flex rounded-md justify-between items-center`}
       onClick={() => toggleTask(task.id)}
     >
-      <div className="text-xl font-bold mr-3 w-[80%] pointer truncate text-left">
+      <div className="text-xl font-semibold mr-3 w-[80%] pointer truncate text-left">
         <p>{task.title}</p>
       </div>
       <div className="flex items-end">
@@ -33,11 +34,11 @@ const TaskRender = ({ task }: Props) => {
           className="border-none text-2xl text-lime-400 m-1.5 pointer bg-zinc-700"
           onClick={(e) => {
             e.stopPropagation();
-            handleInfoClick(task.title);
+            navigate(`/details/${task.title}`);
           }}
         >
           <CgInfo />
-        </button>
+          </button>
       </div>
     </div>
   );

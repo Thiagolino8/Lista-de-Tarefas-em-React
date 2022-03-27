@@ -7,7 +7,7 @@ export interface Task {
   completed: boolean;
 }
 
-interface TasksStore {
+interface TaskStore {
   tasks: Task[];
   filteredTasks: Task[];
   search: string;
@@ -17,7 +17,7 @@ interface TasksStore {
   setSearch: (search: string) => void;
 }
 
-export const useStore = create<TasksStore>((set) => ({
+export const useStore = create<TaskStore>((set) => ({
   tasks: [],
   search: "",
   filteredTasks: [],
@@ -29,6 +29,10 @@ export const useStore = create<TasksStore>((set) => ({
         arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
       }
       title = arr.join(" ");
+      if (state.tasks.map(task => task.title === title).includes(true)) {
+        alert("Task already exists");
+        return { ...state };
+      }
       return {
         tasks: [...state.tasks, { id: nanoid(), title, completed: false }],
       };
@@ -51,3 +55,5 @@ export const useStore = create<TasksStore>((set) => ({
       ),
     })),
 }));
+
+

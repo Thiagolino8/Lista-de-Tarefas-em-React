@@ -2,7 +2,6 @@ import Button from "./Button";
 import { FormEvent, useState } from "react";
 import { useStore } from "../store";
 import Input from "./Input";
-import { useEffect } from "react";
 
 const AddTask = () => {
   const [inputData, setInputData] = useState("");
@@ -17,11 +16,11 @@ const AddTask = () => {
   return (
     <>
       <h2>Add Task</h2>
-      <form onSubmit={(e) => handleSubmit(e)} className="my-4 w-full flex">
-        <div className="add-task-input">
+      <form onSubmit={(e) => handleSubmit(e)} className="flex w-full my-4">
+        <div className="flex-1 add-task-input">
           <Input setValue={setInputData} value={inputData} type="text" />
         </div>
-        <div className="ml-3 flex-1">
+        <div className="ml-3">
           <Button type="submit">Inserir</Button>
         </div>
       </form>
