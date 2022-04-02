@@ -16,7 +16,7 @@ const Details = () => {
       <div className="flex items-end justify-end p-4">
         <Link to="../">
           <div className="">
-            <Button onClick={handleBackClick}>Voltar</Button>
+            <Button onClick={handleBackClick}>Back</Button>
           </div>
         </Link>
       </div>
