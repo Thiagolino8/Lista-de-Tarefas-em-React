@@ -1,7 +1,7 @@
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { CgClose, CgInfo } from "react-icons/cg";
 import { useStore } from "../store";
-import { Task } from "../store";
+import type { Task }  from "../store";
 
 interface Props {
   task: Task;
