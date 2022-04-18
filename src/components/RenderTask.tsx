@@ -1,5 +1,6 @@
 import {  useNavigate } from "react-router-dom";
-import { CgClose, CgInfo } from "react-icons/cg";
+import { CgCheckO, CgClose, CgInfo, CgTrash } from "react-icons/cg";
+import {AiOutlineCheck } from "react-icons/ai";
 import { useStore } from "../store";
 import type { Task }  from "../store";
 
@@ -23,7 +24,16 @@ const TaskRender = ({ task }: Props) => {
       <div className="flex items-end">
         <button
           className="border-none text-2xl text-lime-400 m-1.5 pointer bg-zinc-700"
-          onClick={(e) => {
+          onClick={(e: { stopPropagation: () => void }) => {
+            e.stopPropagation();
+            deleteTask(task.id);
+          }}
+        >
+          <AiOutlineCheck />
+        </button>
+        <button
+          className="border-none text-2xl text-lime-400 m-1.5 pointer bg-zinc-700"
+          onClick={(e: { stopPropagation: () => void }) => {
             e.stopPropagation();
             deleteTask(task.id);
           }}
@@ -32,13 +42,22 @@ const TaskRender = ({ task }: Props) => {
         </button>
         <button
           className="border-none text-2xl text-lime-400 m-1.5 pointer bg-zinc-700"
-          onClick={(e) => {
+          onClick={(e: { stopPropagation: () => void }) => {
+            e.stopPropagation();
+            deleteTask(task.id);
+          }}
+        >
+          <CgTrash />
+        </button>
+        <button
+          className="border-none text-2xl text-lime-400 m-1.5 pointer bg-zinc-700"
+          onClick={(e: { stopPropagation: () => void }) => {
             e.stopPropagation();
             navigate(`/details/${task.title}`);
           }}
         >
           <CgInfo />
-          </button>
+        </button>
       </div>
     </div>
   );
