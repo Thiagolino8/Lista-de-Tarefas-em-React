@@ -12,7 +12,7 @@ interface Props {
 const TaskRender = ({ task }: Props) => {
   const [value, setValue] = useState(task.title);
   const navigate = useNavigate();
-  const { deleteTask, toggleTask, updateTask, getTaskByTitle } = useStore();
+  const { deleteTask, toggleTask, updateTask, getTaskById } = useStore();
   useEffect(() => {
     console.log(value);
   }, []);
@@ -31,7 +31,7 @@ const TaskRender = ({ task }: Props) => {
             if (e.currentTarget.value !== task.title) {
               updateTask(task.id, e.currentTarget.value);
             }
-            setValue(getTaskByTitle(task.title).title)
+            setValue(getTaskById(task.id).title);
           }}
           onKeyDown={(e) => {
             console.log("keydown");
