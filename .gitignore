@@ -5,6 +5,8 @@
 /dist
 
 #amplify-do-not-edit-begin
+amplify/**/*
+dist/**/*
 amplify/\#current-cloud-backend
 amplify/.config/local-*
 amplify/logs
