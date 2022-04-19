@@ -1,60 +1,63 @@
-import {  useNavigate } from "react-router-dom";
-import { CgCheckO, CgClose, CgInfo, CgTrash } from "react-icons/cg";
-import {AiOutlineCheck } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+import { CgClose, CgInfo, CgTrash } from "react-icons/cg";
+import { AiOutlineCheck } from "react-icons/ai";
 import { useStore } from "../store";
-import type { Task }  from "../store";
+import type { Task } from "../store";
+import {useEffect, useState} from "react"
 
 interface Props {
   task: Task;
 }
 
 const TaskRender = ({ task }: Props) => {
-  const navigate = useNavigate()
-  const { deleteTask, toggleTask } = useStore();
+  const [value, setValue] = useState(task.title);
+  const navigate = useNavigate();
+  const { deleteTask, toggleTask, updateTask, getTaskByTitle } = useStore();
+  useEffect(() => {
+    console.log(value);
+  }, []);
   return (
     <div
       className={`${
         task.completed ? "border-l-8 border-solid border border-lime-400" : ""
-      } bg-zinc-700  px-3 py-2 my-3 flex rounded-md justify-between items-center`}
-      onClick={() => toggleTask(task.id)}
+      } bg-zinc-700 px-1 py-2 my-3 flex rounded-md justify-between items-center`}
     >
-      <div className="text-xl font-semibold mr-3 w-[80%] pointer truncate text-left">
-        <p>{task.title}</p>
+      <div className="flex-1 px-1 py-2">
+        <input
+          type="text"
+          value={value}
+          onBlur={(e) => {
+            console.log("blur");
+            if (e.currentTarget.value !== task.title) {
+              updateTask(task.id, e.currentTarget.value);
+            }
+            setValue(getTaskByTitle(task.title).title)
+          }}
+          onKeyDown={(e) => {
+            console.log("keydown");
+            if (e.key === "Enter") {
+              e.currentTarget.blur();
+            }
+          }}
+          className="text-2xl font-bold text-left truncate rounded-md outline-none pointer bg-zinc-700 focus:outline-lime-400 focus:bg-zinc-600"
+        />
       </div>
       <div className="flex items-end">
         <button
           className="border-none text-2xl text-lime-400 m-1.5 pointer bg-zinc-700"
-          onClick={(e: { stopPropagation: () => void }) => {
-            e.stopPropagation();
-            deleteTask(task.id);
-          }}
+          onClick={() => toggleTask(task.id)}
         >
-          <AiOutlineCheck />
+          {task.completed ? <CgClose /> : <AiOutlineCheck />}
         </button>
         <button
           className="border-none text-2xl text-lime-400 m-1.5 pointer bg-zinc-700"
-          onClick={(e: { stopPropagation: () => void }) => {
-            e.stopPropagation();
-            deleteTask(task.id);
-          }}
-        >
-          <CgClose />
-        </button>
-        <button
-          className="border-none text-2xl text-lime-400 m-1.5 pointer bg-zinc-700"
-          onClick={(e: { stopPropagation: () => void }) => {
-            e.stopPropagation();
-            deleteTask(task.id);
-          }}
+          onClick={() => deleteTask(task.id)}
         >
           <CgTrash />
         </button>
         <button
           className="border-none text-2xl text-lime-400 m-1.5 pointer bg-zinc-700"
-          onClick={(e: { stopPropagation: () => void }) => {
-            e.stopPropagation();
-            navigate(`/details/${task.title}`);
-          }}
+          onClick={() => navigate(`/details/${task.title}`)}
         >
           <CgInfo />
         </button>
