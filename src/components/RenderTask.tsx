@@ -3,19 +3,16 @@ import { CgClose, CgInfo, CgTrash } from "react-icons/cg";
 import { AiOutlineCheck } from "react-icons/ai";
 import { useStore } from "../store";
 import type { Task } from "../store";
-import {useEffect, useState} from "react"
+import { useState } from "react";
 
 interface Props {
   task: Task;
 }
 
-const TaskRender = ({ task }: Props) => {
+const RenderTask = ({ task }: Props) => {
   const [value, setValue] = useState(task.title);
   const navigate = useNavigate();
   const { deleteTask, toggleTask, updateTask, getTaskById } = useStore();
-  useEffect(() => {
-    console.log(value);
-  }, []);
   return (
     <div
       className={`${
@@ -26,15 +23,14 @@ const TaskRender = ({ task }: Props) => {
         <input
           type="text"
           value={value}
+          onChange={(e) => setValue(e.target.value)}
           onBlur={(e) => {
-            console.log("blur");
             if (e.currentTarget.value !== task.title) {
               updateTask(task.id, e.currentTarget.value);
             }
-            setValue(getTaskById(task.id).title);
+            setValue(getTaskById(task.id)?.title ?? '');
           }}
-          onKeyDown={(e) => {
-            console.log("keydown");
+          onKeyPress={(e) => {
             if (e.key === "Enter") {
               e.currentTarget.blur();
             }
@@ -66,4 +62,4 @@ const TaskRender = ({ task }: Props) => {
   );
 };
 
-export default TaskRender;
+export default RenderTask;

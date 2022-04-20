@@ -16,8 +16,8 @@ interface TaskStore {
   deleteTask: (id: string) => void;
   setSearch: (search: string) => void;
   updateTask: (id: string, title: string) => void;
-  getTaskByTitle: (title: string) => Task;
-  getTaskById: (id: string) => Task;
+  getTaskByTitle: (title: string) => Task | undefined;
+  getTaskById: (id: string) => Task | undefined;
   taskAlreadyExists: (title: string) => boolean;
   formatTaskTitle: (title: string) => string;
 }
@@ -28,8 +28,8 @@ export const useStore = create<TaskStore>((set, get) => ({
   search: "",
 
   filteredTasks: () =>
-    (get().tasks).filter((task) =>
-      task.title.toLowerCase().includes((get().search).toLowerCase())
+    get().tasks.filter((task) =>
+      task.title.toLowerCase().includes(get().search.toLowerCase())
     ),
 
   addTask: (title: string) =>
@@ -59,12 +59,18 @@ export const useStore = create<TaskStore>((set, get) => ({
       search,
     })),
 
-  updateTask: (id: string, title: string) =>
+  updateTask: (id: string, title: string) => {
+    if (!title) {
+      get().deleteTask(id);
+      return;
+    }
+    if (get().taskAlreadyExists(title)) return;
     set((state) => ({
       tasks: state.tasks.map((task) =>
         task.id === id ? { ...task, title: get().formatTaskTitle(title) } : task
       ),
-    })),
+    }));
+  },
 
   getTaskByTitle: (title: string) =>
     get().tasks.find((task) => task.title === title),

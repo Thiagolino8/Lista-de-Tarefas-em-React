@@ -1,8 +1,7 @@
 import Search from "../components/Search";
 import AddTask from "../components/AddTask";
 import { useStore } from "../store";
-import TaskRender from "../components/RenderTask";
-import { useEffect } from "react";
+import RenderTask from "../components/RenderTask";
 
 const Tasks = () => {
   const { filteredTasks } = useStore();
@@ -12,8 +11,7 @@ const Tasks = () => {
       <Search />
       <AddTask />
       {filteredTasks().map((task) => {
-        console.log(task);
-        return <TaskRender task={task} />;
+        return <RenderTask task={task} key={task.id}/>;
       })}
     </>
   );
