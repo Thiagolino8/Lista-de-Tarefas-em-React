@@ -21,7 +21,7 @@ const AddTask = () => {
           <Input setValue={setInputData} value={inputData} type="text" />
         </div>
         <div className="ml-3">
-          <Button type="submit">Insert</Button>
+          <Button type="submit">Inserir</Button>
         </div>
       </form>
     </>

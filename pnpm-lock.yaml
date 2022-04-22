@@ -7,6 +7,7 @@ specifiers:
   '@rollup/plugin-alias': ^3.1.9
   '@tanstack/react-location': ^3.7.4
   '@types/react': ^18.0.5
+  '@types/react-dom': ^18.0.1
   autoprefixer: ^10.4.4
   nanoid: ^3.3.3
   postcss: ^8.4.12
@@ -15,6 +16,7 @@ specifiers:
   react-dom: ^18.0.0
   react-icons: ^4.3.1
   react-router-dom: ^6.3.0
+  react-tracked: ^1.7.9
   rollup: ^2.70.2
   tailwindcss: ^3.0.24
   typescript: ^4.6.3
@@ -37,9 +39,11 @@ devDependencies:
   '@prefresh/vite': 2.2.8_preact@10.7.1+vite@2.9.5
   '@rollup/plugin-alias': 3.1.9_rollup@2.70.2
   '@types/react': 18.0.5
+  '@types/react-dom': 18.0.1
   autoprefixer: 10.4.4_postcss@8.4.12
   postcss: 8.4.12
   react-icons: 4.3.1_react@18.0.0
+  react-tracked: 1.7.9_react-dom@18.0.0+react@18.0.0
   tailwindcss: 3.0.24
   typescript: 4.6.3
   vite: 2.9.5
@@ -393,6 +397,12 @@ packages:
 
   /@types/prop-types/15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
+    dev: true
+
+  /@types/react-dom/18.0.1:
+    resolution: {integrity: sha512-jCwTXvHtRLiyVvKm9aEdHXs8rflVOGd5Sl913JZrPshfXjn8NYsTNZOz70bCsA31IR0TOqwi3ad+X4tSCBoMTw==}
+    dependencies:
+      '@types/react': 18.0.5
     dev: true
 
   /@types/react/18.0.5:
@@ -1059,6 +1069,10 @@ packages:
     resolution: {integrity: sha512-MufnRFz39aIhs9AMFisonjzTud1PK1bY+jcJLo6m2T9Uh8AqjD77w11eAAawmjUogoGOnipECq7e/1RClIKsxg==}
     dev: false
 
+  /proxy-compare/2.1.0:
+    resolution: {integrity: sha512-wapJ3h/w8fRSyPEG0y2WMV+tf9xwvj3nxM6aHVuPEOwKs/t5xLSKZb44ubNTiqq2T6lmEMHEWGMTaU2L6ddaFA==}
+    dev: true
+
   /queue-microtask/1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: true
@@ -1106,6 +1120,25 @@ packages:
       history: 5.3.0
       react: 18.0.0
     dev: false
+
+  /react-tracked/1.7.9_react-dom@18.0.0+react@18.0.0:
+    resolution: {integrity: sha512-axBJegjdQbsHizZ0DtEpM4g3sDW1SF5mq9j9bk77mRbcFR+OeBR4vLAqO7E6/DOPeGdDDqLBBIFBy5tmjnOd+A==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '*'
+      react-native: '*'
+      scheduler: '>=0.19.0'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      proxy-compare: 2.1.0
+      react: 18.0.0
+      react-dom: 18.0.0_react@18.0.0
+      use-context-selector: 1.3.10_react-dom@18.0.0+react@18.0.0
+    dev: true
 
   /react/18.0.0:
     resolution: {integrity: sha512-x+VL6wbT4JRVPm7EGxXhZ8w8LTROaxPXOqhlGyVSrv0sB1jkyFGgXxJ8LVoPRLvPR6/CIZGFmfzqUa2NYeMr2A==}
@@ -1235,6 +1268,23 @@ packages:
     resolution: {integrity: sha512-yNIatDa5iaofVozS/uQJEl3JRWLKKGJKh6Yaiv0GLGSuhpFJe7P3SbHZ8/yjAHRQwKRoA6YZqlfjXWmVzoVSMw==}
     engines: {node: '>=4.2.0'}
     hasBin: true
+    dev: true
+
+  /use-context-selector/1.3.10_react-dom@18.0.0+react@18.0.0:
+    resolution: {integrity: sha512-xprS9YQ0F56IPTOjev+Lm+TWZD7Pa20+slBeaClt4YtOOoHKFOF3A9Cfr7LDcX2QIZ9VTyxXCnA6/WhL4Cm47g==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '*'
+      react-native: '*'
+      scheduler: '>=0.19.0'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      react: 18.0.0
+      react-dom: 18.0.0_react@18.0.0
     dev: true
 
   /use-sync-external-store/1.0.0_react@18.0.0:

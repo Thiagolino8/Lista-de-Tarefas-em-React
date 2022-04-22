@@ -9,26 +9,30 @@ interface Props {
   task: Task;
 }
 
-const RenderTask = ({ task }: Props) => {
+const TaskRender = ({ task }: Props) => {
   const [value, setValue] = useState(task.title);
   const navigate = useNavigate();
-  const { deleteTask, toggleTask, updateTask, getTaskById } = useStore();
+  const { deleteTask, toggleTask, updateTask, getTaskById, formatTaskTitle } =
+    useStore();
   return (
     <div
       className={`${
         task.completed ? "border-l-8 border-solid border border-lime-400" : ""
       } bg-zinc-700 px-1 py-2 my-3 flex rounded-md justify-between items-center`}
     >
-      <div className="flex-1 px-1 py-2">
+      <div className="px-1 py-2">
         <input
           type="text"
           value={value}
           onChange={(e) => setValue(e.target.value)}
           onBlur={(e) => {
-            if (e.currentTarget.value !== task.title) {
+            if (
+              formatTaskTitle(e.currentTarget.value) !==
+              formatTaskTitle(task.title)
+            ) {
               updateTask(task.id, e.currentTarget.value);
             }
-            setValue(getTaskById(task.id)?.title ?? '');
+            setValue(getTaskById(task.id)?.title ?? "");
           }}
           onKeyPress={(e) => {
             if (e.key === "Enter") {
@@ -62,4 +66,4 @@ const RenderTask = ({ task }: Props) => {
   );
 };
 
-export default RenderTask;
+export default TaskRender;
