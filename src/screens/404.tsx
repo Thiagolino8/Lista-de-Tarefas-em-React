@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const Page404 = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   useEffect(() => {
     setTimeout(() => {
-      navigate("/");
+      navigate('/');
     }, 5000);
   }, []);
   return (

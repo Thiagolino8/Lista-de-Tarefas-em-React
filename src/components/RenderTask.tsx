@@ -12,8 +12,7 @@ interface Props {
 const TaskRender = ({ task }: Props) => {
   const [value, setValue] = useState(task.title);
   const navigate = useNavigate();
-  const { deleteTask, toggleTask, updateTask, getTaskById, formatTaskTitle } =
-    useStore();
+  const { deleteTask, toggleTask, updateTask, getTaskById, formatTaskTitle } = useStore();
   return (
     <div
       className={`${
@@ -26,13 +25,10 @@ const TaskRender = ({ task }: Props) => {
           value={value}
           onChange={(e) => setValue(e.target.value)}
           onBlur={(e) => {
-            if (
-              formatTaskTitle(e.currentTarget.value) !==
-              formatTaskTitle(task.title)
-            ) {
+            if (formatTaskTitle(e.currentTarget.value) !== formatTaskTitle(task.title)) {
               updateTask(task.id, e.currentTarget.value);
             }
-            setValue(getTaskById(task.id)?.title ?? "");
+            setValue(getTaskById(task.id)?.title ?? '');
           }}
           onKeyPress={(e) => {
             if (e.key === "Enter") {
