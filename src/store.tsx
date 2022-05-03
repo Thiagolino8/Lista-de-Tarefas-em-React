@@ -48,8 +48,11 @@ export const useStore = createTrackedSelector(
 					}),
 
 				changeDetails: (title: string, details: string) => {
+					details = details.trim()
+					console.log(details)
 					set((draft) => {
 						draft.tasks = draft.tasks.map((task) => (task.title === title ? { ...task, details } : task))
+						console.log(draft.tasks)
 					})
 				},
 
