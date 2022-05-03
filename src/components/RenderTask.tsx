@@ -35,14 +35,14 @@ const TaskRender = ({ task }: Props) => {
 							e.currentTarget.blur()
 						}
 					}}
-					className='w-full text-2xl font-bold text-left truncate input-ghost input focus:input-primary'
+					className='w-full text-2xl font-bold text-left truncate input-ghost input focus:input-primary caret-lime-400'
 				/>
 			</div>
-			<div className='flex items-end gap-2'>
+			<div className='flex items-end gap-1'>
 				<button className='btn btn-link hover:btn-primary swap swap-rotate' onClick={() => toggleTask(task.id)}>
 					<input type='checkbox' checked={task.completed} />
-						<CgClose className='fill-current swap-on' />
-						<AiOutlineCheck className='fill-current swap-off' />
+					<CgClose className='fill-current swap-on' />
+					<AiOutlineCheck className='fill-current swap-off' />
 				</button>
 				<button className='btn btn-link hover:btn-primary' onClick={() => deleteTask(task.id)}>
 					<CgTrash />

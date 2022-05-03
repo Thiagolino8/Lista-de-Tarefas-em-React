@@ -24,14 +24,14 @@ const Details = () => {
 						changeDetails(title!, e.currentTarget.innerText)
 						setDetails(getTaskByTitle(title!)?.details ?? '')
 					}}
-					className='block text-xl whitespace-pre-wrap textarea-ghost textarea focus:textarea-primary empty:text-gray-300'
+					className='overflow-y-auto max-h-96 block text-xl whitespace-pre-wrap textarea-ghost textarea focus:textarea-primary empty:text-gray-300 caret-lime-400'
 				>
 					{details}
 				</span>
 			</div>
 			<div className='flex items-end justify-end p-4'>
 				<Link to='../'>
-						<Button>Voltar</Button>
+					<Button>Voltar</Button>
 				</Link>
 			</div>
 		</>

@@ -11,3 +11,18 @@ h2 {
   font-bold
   my-2
 }
+
+/* width */
+::-webkit-scrollbar {
+  @apply w-[1vw] m-1
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-neutral-600
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-lime-400 rounded-full hover:bg-lime-600
+}

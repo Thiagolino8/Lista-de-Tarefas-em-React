@@ -7,7 +7,7 @@ import {Page404} from './screens/404';
 const App = () => {
 
 	return (
-			<div className='w-screen max-w-screen-sm font-sans text-center text-white border-2 min-h-fit border-lime-400 p-7 rounded-xl'>
+			<div className='w-screen max-h-screen-sm max-w-screen-sm font-sans text-center text-white border-2 min-h-fit border-lime-400 p-7 rounded-xl'>
 				<Routes>
 					<Route path='/' element={<Tasks />} />
 					<Route path='/details/:title' element={<Details />} />
