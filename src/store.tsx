@@ -2,7 +2,7 @@ import create, { State, StateCreator } from 'zustand'
 import { nanoid } from 'nanoid'
 import { createTrackedSelector } from 'react-tracked'
 import { persist, devtools } from 'zustand/middleware'
-import produce, { Draft } from 'immer'
+import produce, { state } from 'immer'
 
 export interface Task {
 	id: string
@@ -27,7 +27,7 @@ interface TaskStore {
 }
 
 const immer =
-	<T extends State>(config: StateCreator<T, (fn: (draft: Draft<T>) => void) => void>): StateCreator<T> =>
+	<T extends State>(config: StateCreator<T, (fn: (state: state<T>) => void) => void>): StateCreator<T> =>
 	(set, get, api) =>
 		config((fn) => set(produce<T>(fn)), get, api)
 
@@ -40,35 +40,35 @@ export const useStore = createTrackedSelector(
 				search: '',
 
 				addTask: (title: string) =>
-					set((draft) => {
+					set((state) => {
 						if (!title) return
 						title = get().formatTaskTitle(title)
 						if (get().taskAlreadyExists(title)) return
-						draft.tasks.push({ id: nanoid(), title, completed: false, details: '' })
+						state.tasks.push({ id: nanoid(), title, completed: false, details: '' })
 					}),
 
 				changeDetails: (title: string, details: string) => {
 					details = details.trim()
 					console.log(details)
-					set((draft) => {
-						draft.tasks = draft.tasks.map((task) => (task.title === title ? { ...task, details } : task))
-						console.log(draft.tasks)
+					set((state) => {
+						state.tasks = state.tasks.map((task) => (task.title === title ? { ...task, details } : task))
+						console.log(state.tasks)
 					})
 				},
 
 				toggleTask: (id: string) =>
-					set((draft) => {
-						draft.tasks = draft.tasks.map((task) => (task.id === id ? { ...task, completed: !task.completed } : task))
+					set((state) => {
+						state.tasks = state.tasks.map((task) => (task.id === id ? { ...task, completed: !task.completed } : task))
 					}),
 
 				deleteTask: (id: string) =>
-					set((draft) => {
-						draft.tasks = draft.tasks.filter((task) => task.id !== id)
+					set((state) => {
+						state.tasks = state.tasks.filter((task) => task.id !== id)
 					}),
 
 				setSearch: (search: string) =>
-					set((draft) => {
-						draft.search = search
+					set((state) => {
+						state.search = search
 					}),
 
 				updateTask: (id: string, title: string) => {
@@ -77,8 +77,8 @@ export const useStore = createTrackedSelector(
 						return
 					}
 					if (get().taskAlreadyExists(title)) return
-					set((draft) => {
-						draft.tasks = draft.tasks.map((task) =>
+					set((state) => {
+						state.tasks = state.tasks.map((task) =>
 							task.id === id ? { ...task, title: get().formatTaskTitle(title) } : task
 						)
 					})
