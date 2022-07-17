@@ -1,19 +1,18 @@
-import { useEffect, useState } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
-import Button from "../components/Button";
-import { useStore } from "../store";
-import '../styles/Details.css';
+import '../styles/Details.css'
 
+import { useState } from 'react'
+import { Link, Navigate, useParams } from 'react-router-dom'
+
+import Button from '../components/Button'
+import { useStore } from '../store'
 
 const Details = () => {
-  const navigate = useNavigate();
 	const { title } = useParams()
 	const { getTaskByTitle, changeDetails } = useStore()
-	useEffect(() => {
-		if (!getTaskByTitle(title ?? "")) navigate("/error");
-	}, [])
-	const [details, setDetails] = useState(getTaskByTitle(title!)?.details ?? '')
-  return (
+	const details = getTaskByTitle(title!)?.details ?? ''
+	return !getTaskByTitle(title ?? '') ? (
+		<Navigate to='/error' />
+	) : (
 		<>
 			<h1 className='truncate'>{title}</h1>
 			<div className='flex-wrap h-full mt-5 rounded-md bg-zinc-600'>
@@ -22,7 +21,6 @@ const Details = () => {
 					contentEditable
 					onBlur={(e) => {
 						changeDetails(title!, e.currentTarget.innerText)
-						setDetails(getTaskByTitle(title!)?.details ?? '')
 					}}
 					className='overflow-y-auto max-h-96 block text-xl whitespace-pre-wrap textarea-ghost textarea focus:textarea-primary empty:text-gray-300 caret-lime-400'
 				>
@@ -36,6 +34,6 @@ const Details = () => {
 			</div>
 		</>
 	)
-};
+}
 
-export default Details;
+export default Details

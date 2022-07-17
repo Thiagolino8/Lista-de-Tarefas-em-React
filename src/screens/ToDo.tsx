@@ -1,5 +1,5 @@
-import Search from '../components/Search'
 import AddTask from '../components/AddTask'
+import Search from '../components/Search'
 import { Tasks } from '../components/Tasks'
 
 const ToDo = () => {
