@@ -19,9 +19,7 @@ const Details = () => {
 				<span
 					role='textbox'
 					contentEditable
-					onBlur={(e) => {
-						changeDetails(title!, e.currentTarget.innerText)
-					}}
+					onBlur={(e) => changeDetails(title!, e.currentTarget.innerText)}
 					className='overflow-y-auto max-h-96 block text-xl whitespace-pre-wrap textarea-ghost textarea focus:textarea-primary empty:text-gray-300 caret-lime-400'
 				>
 					{details}
