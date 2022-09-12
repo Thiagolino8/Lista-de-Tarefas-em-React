@@ -7,7 +7,7 @@ A to-do list built in react and ported to preact
 - [x] Immer
 - [x] Vite
 - [x] NanoID
-- [x] WindiCss
+- [x] TailwindCSS
 - [X] React-Tracked
 - [X] React-Router-Dom
 # Website

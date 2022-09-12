@@ -3,7 +3,7 @@ import { CgClose, CgInfo, CgTrash } from 'react-icons/cg'
 import { AiOutlineCheck } from 'react-icons/ai'
 import { useStore } from '../store'
 import type { Task } from '../store'
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 
 interface Props {
 	task: Task
@@ -16,8 +16,8 @@ const TaskRender = ({ task }: Props) => {
 	return (
 		<div
 			className={`${
-				task.completed ? 'border-l-8 border-solid border border-lime-400' : ''
-			} bg-zinc-700 px-1 py-2 my-3 flex rounded-md justify-between items-center`}
+				task.completed ? 'border-lime-400' : 'border-zinc-700'
+			} bg-zinc-700 border-solid border border-l-8 px-1 py-2 my-3 flex rounded-md justify-between items-center transition-colors duration-200`}
 		>
 			<div className='w-full pl-1 pr-2'>
 				<input
@@ -30,8 +30,8 @@ const TaskRender = ({ task }: Props) => {
 						}
 						setValue(getTaskById(task.id)?.title ?? '')
 					}}
-					onKeyPress={(e) => {
-						if (e.key === 'Enter') {
+					onBeforeInput={(e) => {
+						if ((e as unknown as InputEvent).inputType === 'insertLineBreak') {
 							e.currentTarget.blur()
 						}
 					}}
