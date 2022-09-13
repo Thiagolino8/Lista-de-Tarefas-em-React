@@ -11,7 +11,7 @@ export const Tasks = () => {
   }, [parent])
 	return (
 		<div
-			className='overflow-x-clip max-h-80 scrollbar scrollbar-thin scrollbar-thumb-lime-400'
+			className={`${filteredTasks().length ? 'visible' : 'invisible'} overflow-x-clip max-h-80 scrollbar-thin scrollbar-thumb-lime-400`}
 			ref={parent}
 		>
 			{filteredTasks().map((task) => {
