@@ -1,9 +1,9 @@
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { CgClose, CgInfo, CgTrash } from 'react-icons/cg'
 import { AiOutlineCheck } from 'react-icons/ai'
 import { useStore } from '../store'
 import type { Task } from '../store'
-import { FormEvent, useState } from 'react'
+import { useState } from 'react'
 
 interface Props {
 	task: Task
@@ -11,7 +11,6 @@ interface Props {
 
 const TaskRender = ({ task }: Props) => {
 	const [value, setValue] = useState(task.title)
-	const navigate = useNavigate()
 	const { deleteTask, toggleTask, updateTask, getTaskById, formatTaskTitle } = useStore()
 	return (
 		<div
@@ -47,9 +46,11 @@ const TaskRender = ({ task }: Props) => {
 				<button className='btn btn-link hover:btn-primary' onClick={() => deleteTask(task.id)}>
 					<CgTrash />
 				</button>
-				<button className='btn btn-link hover:btn-primary' onClick={() => navigate(`/details/${task.title}`)}>
+				<Link to={`/details/${task.title}`}>
+				<button className='btn btn-link hover:btn-primary'>
 					<CgInfo />
-				</button>
+					</button>
+				</Link>
 			</div>
 		</div>
 	)

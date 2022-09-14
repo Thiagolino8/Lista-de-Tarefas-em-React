@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'framer-motion'
 import AddTask from '../components/AddTask'
 import Search from '../components/Search'
 import { Tasks } from '../components/Tasks'
@@ -8,7 +9,7 @@ const ToDo = () => {
 	return (
 		<>
 			<h1>To Do List</h1>
-			{!!tasks.length && <Search />}
+			<AnimatePresence>{!!tasks.length && <Search />}</AnimatePresence>
 			<AddTask />
 			<Tasks />
 		</>

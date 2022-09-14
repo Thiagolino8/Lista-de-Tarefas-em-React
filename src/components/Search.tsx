@@ -1,15 +1,20 @@
-import shallow from "zustand/shallow";
-import { useStore } from "../store";
-import Input from "./Input";
+import { useStore } from '../store'
+import Input from './Input'
+import { m } from 'framer-motion'
 
 const Search = () => {
-  const { search, setSearch } = useStore();
-  return (
-    <div>
-      <h2>Search</h2>
-      <Input type='text' value={search} setValue={setSearch}/>
-    </div>
-  );
-};
+	const { search, setSearch } = useStore()
+	return (
+		<m.div
+			key='modal'
+			initial={{ opacity: 0, scaleY: 0 }}
+			animate={{ opacity: 1, scaleY: 1 }}
+			exit={{ opacity: 0, height: 0 }}
+		>
+			<h2>Search</h2>
+			<Input type='text' value={search} setValue={setSearch} />
+		</m.div>
+	)
+}
 
-export default Search;
+export default Search

@@ -1,6 +1,5 @@
 import '../styles/Details.css'
 
-import { useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 
 import Button from '../components/Button'
@@ -10,7 +9,7 @@ const Details = () => {
 	const { title } = useParams()
 	const { getTaskByTitle, changeDetails } = useStore()
 	const details = getTaskByTitle(title!)?.details ?? ''
-	return !getTaskByTitle(title ?? '') ? (
+	return details === null ? (
 		<Navigate to='/error' />
 	) : (
 		<>
@@ -20,13 +19,13 @@ const Details = () => {
 					role='textbox'
 					contentEditable
 					onBlur={(e) => changeDetails(title!, e.currentTarget.innerText)}
-					className='overflow-y-auto max-h-96 block text-xl whitespace-pre-wrap textarea-ghost textarea focus:textarea-primary empty:text-gray-300 caret-lime-400'
+					className='block overflow-y-auto text-xl whitespace-pre-wrap max-h-96 textarea-ghost textarea focus:textarea-primary empty:text-gray-300 caret-lime-400'
 				>
 					{details}
 				</span>
 			</div>
 			<div className='flex items-end justify-end p-4'>
-				<Link to='../'>
+				<Link to='/'>
 					<Button>Voltar</Button>
 				</Link>
 			</div>
