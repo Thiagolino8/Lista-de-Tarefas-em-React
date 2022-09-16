@@ -1,6 +1,7 @@
+import { m } from 'framer-motion'
+
 import { useStore } from '../store'
 import Input from './Input'
-import { m } from 'framer-motion'
 
 const Search = () => {
 	const { search, setSearch } = useStore()

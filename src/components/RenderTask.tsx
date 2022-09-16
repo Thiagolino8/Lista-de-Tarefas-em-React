@@ -1,10 +1,11 @@
-import { Link, useNavigate } from 'react-router-dom'
-import { CgClose, CgInfo, CgTrash } from 'react-icons/cg'
-import { AiOutlineCheck } from 'react-icons/ai'
-import { useStore } from '../store'
-import type { Task } from '../store'
 import { useState } from 'react'
+import { AiOutlineCheck } from 'react-icons/ai'
+import { CgClose, CgInfo, CgTrash } from 'react-icons/cg'
+import { Link } from 'react-router-dom'
 
+import { useStore } from '../store'
+
+import type { Task } from '../store'
 interface Props {
 	task: Task
 }
@@ -47,8 +48,8 @@ const TaskRender = ({ task }: Props) => {
 					<CgTrash />
 				</button>
 				<Link to={`/details/${task.title}`}>
-				<button className='btn btn-link hover:btn-primary'>
-					<CgInfo />
+					<button className='btn btn-link hover:btn-primary'>
+						<CgInfo />
 					</button>
 				</Link>
 			</div>

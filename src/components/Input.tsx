@@ -1,28 +1,6 @@
 interface Props {
 	children?: React.ReactNode
-	type?:
-		| 'text'
-		| 'number'
-		| 'password'
-		| 'email'
-		| 'date'
-		| 'time'
-		| 'datetime-local'
-		| 'search'
-		| 'tel'
-		| 'url'
-		| 'month'
-		| 'week'
-		| 'color'
-		| 'range'
-		| 'checkbox'
-		| 'radio'
-		| 'file'
-		| 'hidden'
-		| 'image'
-		| 'submit'
-		| 'reset'
-		| 'button'
+	type?: HTMLInputElement['type']
 	value?: any
 	setValue: React.Dispatch<React.SetStateAction<any>>
 }
